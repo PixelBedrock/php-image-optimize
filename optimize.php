@@ -14,6 +14,9 @@ if (!function_exists('str_contains')) {
     }
 }
 
+//Disallow search engines from indexing thumbnails
+header("X-Robots-Tag: noindex")
+
 //Block cross-origin requests (optional)
 header("Cross-Origin-Resource-Policy: same-site");
 
@@ -51,7 +54,7 @@ $output=imagescale($gdimage,256);
 header("Content-Type: image/webp");
 
 //Set up caching parameters
-header("Cache-Control: public; must-revalidate; max-age=259200; stale-while-revalidate=86400; stale-if-error=86400");
+header("Cache-Control: public; must-revalidate; max-age=86400; stale-while-revalidate=604800; stale-if-error=604800");
 
 //Serve the image in WEBP with 60% quality
 imagewebp($output,null,60);
