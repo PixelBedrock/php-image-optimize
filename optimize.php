@@ -28,12 +28,12 @@ header("Cross-Origin-Resource-Policy: same-site");
 
 //Require an image
 if($_GET['url']==null){
-    http_response_code(401);
+    http_response_code(400);
     die("An image URL must be provided");
 }
 //Limit to GM URLs
 if(!str_contains($_GET['url'],'https://img.gamemonetize.com/')){
-    http_response_code(403);
+    http_response_code(400);
     die("You are only allowed to provide GameMonetize URLs!");
 }
 
