@@ -6,6 +6,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+// Only allow GET requests to be sent
+if ($_SERVER['REQUEST_METHOD'] != 'GET') {
+    http_response_code(405);
+    die('This endpoint only allows for GET requests!');
+}
+
 //Polyfill str_contains for PHP versions < 8
 if (!function_exists('str_contains')) {
     function str_contains(string $haystack, string $needle): bool
